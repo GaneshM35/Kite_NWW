@@ -214,25 +214,57 @@ define(['knockout', 'jquery', 'jqueryui',
                  //var top  = pickList.objects[1].parentLayer;
                 //alert("test "+ position.latitude +" "+ position.longitude) ; -104.1943359375%2C33.5302734375%2C-95.3173828125%2C42.4072265625
 
-                   //JSON.stringify(pick,null,"4");
-                   function get_data_from_url(url){
-                        var http_req = new XMLHttpRequest();
-                        http_req.open("GET",my_url,false);
-                        http_req.send(null);
-                         return http_req.responseText;          
-                    }
-
+                var test,property;
                 var my_url = 'http://localhost:8080/geoserver/topp/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&FORMAT=image%2Fpng&TRANSPARENT=true&QUERY_LAYERS=topp%3Astates&STYLES&LAYERS=topp%3Astates&INFO_FORMAT=application%2Fjson&FEATURE_COUNT=50&X=50&Y=50&SRS=EPSG%3A4326&WIDTH=101&HEIGHT=101&BBOX='+latlon+'';
-                var $featuredialog =  $("#feature")
-                    
-                    var data_obj = JSON.parse(get_data_from_url(my_url));
-                    console.log("Data object: "+ data_obj);
-                    .html('<iframe style="border: 0px; " src="http://localhost:8080/geoserver/topp/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&FORMAT=image%2Fpng&TRANSPARENT=true&QUERY_LAYERS=topp%3Astates&STYLES&LAYERS=topp%3Astates&INFO_FORMAT=application%2Fjson&FEATURE_COUNT=50&X=50&Y=50&SRS=EPSG%3A4326&WIDTH=101&HEIGHT=101&BBOX='+latlon+'" width="100%" height="100%"></iframe>')
-                    .dialog({ 
+                fetch(my_url)
+                .then(res => res.json())
+                .then((out) => {
+                    console.log('Checkout this JSON! ', out);
+                    if(out.crs == null){
+                        console.log('no object');
+                    }else{
+                        property = out.features[0].properties;
+                        console.log('Checkout this STATE_NAME! ', property);
+
+                        var $featuredialog =  $("#feature")                    
+                        .html('State Name : '+property.STATE_NAME+
+                            '<br>Population : '+property.PERSONS+
+                            '<br>Families : '+property.FAMILIES+
+                            '<br>Males : '+property.MALE)
+                        .dialog({ 
                               autoOpen: false,
                               title: "GetFeatureInfo"
                             });
-                        $featuredialog.dialog("open");
+                            $featuredialog.dialog("open");
+                    }
+                })
+            //     PERSONS":1578385,
+            // "FAMILIES":415427,
+            // "HOUSHOLD":602363,
+            // "MALE":769439,
+            // "FEMALE":808946,
+            // "WORKERS":571600,
+            // "DRVALONE":590216,
+            // "CARPOOL":86820,
+            // "PUBTRANS":8988,
+            // "EMPLOYED":772813,
+            // "UNEMPLOY":29326,
+                //console.log('Checkout this copy! ', test);
+                // property = test.features[0].properties.STATE_NAME;
+                // console.log('Checkout this properties! ', property);
+
+                // var $featuredialog =  $("#feature")
+                    
+                //     //var data_obj = JSON.parse(get_data_from_url(my_url));
+                //     //console.log("Data object: "+ data_obj);
+                    
+                //         .html('<h>Ganesh</h2>')
+                //         .dialog({ 
+                //               autoOpen: false,
+                //               title: "GetFeatureInfo"
+                //             });
+                //             $featuredialog.dialog("open");
+                    
 
             });
 

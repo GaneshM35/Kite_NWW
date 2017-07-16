@@ -50,7 +50,7 @@ define(['knockout',
             layerManager.addServer("http://199.79.36.156/cgi-bin/mapserv?map=LAND_MGT_WMS.map&");
 			layerManager.addServer("http://199.79.36.156/cgi-bin/mapserv?map=ES_WMS.map&");
 			layerManager.addServer("http://199.79.36.156/cgi-bin/mapserv?map=ENVIRON_WMS.map&");
-            layerManager.addServer("http://127.0.0.1:8080/geoserver/topp/wms?");
+            layerManager.addServer("http://localhost:8080/geoserver/topp/wms?");
         }
 
         return HomeViewModel;
