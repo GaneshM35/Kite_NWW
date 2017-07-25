@@ -370,21 +370,21 @@ Main Content
                     <div class="panel-collapse collapse in" id="logo-layers-panel">
                         
                             <!--Layer name and visibility button-->
-                            <button type="button" id="icon_Springfield" class="btn btn-default layer-name wrap-panel-heading active" style="display: block; width: 100%;">
+                            <button type="button" id="icon_Springfield" class="btn btn-default active" style="display: block; width: 100%;">
                                 <span>
-                                    <input class="pull-left" type="checkbox" id="btn_Springfield" checked>
+                                    <input class="pull-left" type="checkbox" id="btn_Springfield">
                                 </span>
                                 <span class="layer">SpringField OR</span>
                             </button>
-                        <button type="button" id="icon_Nasa" class="btn btn-default layer-name wrap-panel-heading active" style="display: block; width: 100%;">
+                        <button type="button" id="icon_Nasa" class="btn btn-default active" style="display: block; width: 100%;">
                                 <span>
-                                    <input class="pull-left" type="checkbox" id="btn_Nasa" checked>
+                                    <input class="pull-left" type="checkbox" id="btn_Nasa">
                                 </span>
                                 <span class="layer">Ames Center NASA</span>
                             </button>
-                        <button type="button" id="icon_Kite" class="btn btn-default layer-name wrap-panel-heading active" style="display: block; width: 100%;">
+                        <button type="button" id="icon_Kite" class="btn btn-default active" style="display: block; width: 100%;">
                                 <span>
-                                    <input class="pull-left" type="checkbox" id="btn_Kite" checked>
+                                    <input class="pull-left" type="checkbox" id="btn_Kite">
                                 </span>
                                 <span class="layer">KiTE Campus</span>
                             </button>
@@ -757,7 +757,9 @@ This server-template script renders a server's tab content
     });
 	$(document).ready(function()
 	{  
-
+        $("#btn_Springfield").prop("checked", true);
+        $("#btn_Nasa").prop("checked", true);
+        $("#btn_Kite").prop("checked", true);
         Split(['.markersplit1', '.markersplit2'], {
             direction: 'vertical',
             resizeToHeight: 'true'
