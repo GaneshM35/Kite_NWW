@@ -214,7 +214,7 @@ define(['knockout', 'jquery', 'jqueryui',
                  //var top  = pickList.objects[1].parentLayer;
                 //alert("test "+ position.latitude +" "+ position.longitude) ; -104.1943359375%2C33.5302734375%2C-95.3173828125%2C42.4072265625
 
-                var test,property;
+                var test,property,property1,property2;
                 var my_url = 'http://localhost:8080/geoserver/topp/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&FORMAT=image%2Fpng&TRANSPARENT=true&QUERY_LAYERS=topp%3Astates&STYLES&LAYERS=topp%3Astates&INFO_FORMAT=application%2Fjson&FEATURE_COUNT=50&X=50&Y=50&SRS=EPSG%3A4326&WIDTH=101&HEIGHT=101&BBOX='+latlon+'';
                 fetch(my_url)
                 .then(res => res.json())
@@ -238,17 +238,77 @@ define(['knockout', 'jquery', 'jqueryui',
                             $featuredialog.dialog("open");
                     }
                 })
-            //     PERSONS":1578385,
-            // "FAMILIES":415427,
-            // "HOUSHOLD":602363,
-            // "MALE":769439,
-            // "FEMALE":808946,
-            // "WORKERS":571600,
-            // "DRVALONE":590216,
-            // "CARPOOL":86820,
-            // "PUBTRANS":8988,
-            // "EMPLOYED":772813,
-            // "UNEMPLOY":29326,
+            //     var layerWater = 'http://localhost:8080/geoserver/topp/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&FORMAT=image%2Fpng&TRANSPARENT=true&QUERY_LAYERS=topp%3Atasmania_water_bodies&STYLES&LAYERS=topp%3Atasmania_water_bodies&INFO_FORMAT=application%2Fjson&FEATURE_COUNT=50&X=50&Y=50&SRS=EPSG%3A4326&WIDTH=101&HEIGHT=101&BBOX='+latlon+'';
+            //     var layerroad = 'http://localhost:8080/geoserver/topp/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&FORMAT=image%2Fpng&TRANSPARENT=true&QUERY_LAYERS=topp%3Atasmania_roads&STYLES&LAYERS=topp%3Atasmania_roads&INFO_FORMAT=application%2Fjson&FEATURE_COUNT=50&X=50&Y=50&SRS=EPSG%3A4326&WIDTH=101&HEIGHT=101&BBOX='+latlon+'';
+            //     fetch(layerWater)
+            //     .then(res => res.json())
+            //     .then((out) => {
+            //         console.log('Checkout this JSON! ', out);
+            //         if(out.crs == null){
+            //             console.log('no object');
+            //             fetch(layerroad)
+            //             .then(res => res.json())
+            //             .then((out) => {
+            //             console.log('Checkout this JSON! ', out);
+            //             if(out.crs == null){
+            //                 console.log('no object');
+            //             }else{
+            //                 property2 = out.features[0].properties;
+            //                 console.log('Checkout this STATE_NAME! ', property2);
+            //                 var $featuredialog =  $("#feature")                    
+            //             .html('Type : '+property2.TYPE)
+            //             .dialog({ 
+            //                   autoOpen: false,
+            //                   title: "GetFeatureInfo"
+            //                 });
+            //                 $featuredialog.dialog("open");
+
+            //             }
+            //         })
+            //         }else{
+            //             property1 = out.features[0].properties;
+            //             console.log('Checkout this STATE_NAME! ', property1);
+                     
+            //             fetch(layerroad)
+            //             .then(res => res.json())
+            //             .then((out) => {
+            //             console.log('Checkout this JSON! ', out);
+            //             if(out.crs == null){
+            //                 console.log('no object');
+            //                 var $featuredialog =  $("#feature")                    
+            //             .html('Area : '+property1.AREA+
+            //                 '<br>Perimeter : '+property1.PERIMETER)
+            //             .dialog({ 
+            //                   autoOpen: false,
+            //                   title: "GetFeatureInfo"
+            //                 });
+            //                 $featuredialog.dialog("open");
+            //             }else{
+            //                 property2 = out.features[0].properties;
+            //                 console.log('Checkout this STATE_NAME! ', property2);
+            //                 var $featuredialog =  $("#feature")                    
+            //                 .html('Area : '+property1.AREA+
+            //                     '<br>Perimeter : '+property1.PERIMETER+
+            //                     '<br>Type : '+property2.TYPE)
+            //                 .dialog({ 
+            //                   autoOpen: false,
+            //                   title: "GetFeatureInfo"
+            //                 });
+            //                 $featuredialog.dialog("open");
+            //             }
+            //         })                        
+            //     }
+            // })
+                // var $featuredialog =  $("#feature")                    
+                //         .html('Area : '+property1.AREA+
+                //             '<br>Perimeter : '+property1.PERIMETER+
+                //             '<br>Type : '+property2.TYPE)
+                //         .dialog({ 
+                //               autoOpen: false,
+                //               title: "GetFeatureInfo"
+                //             });
+                //             $featuredialog.dialog("open");
+
                 //console.log('Checkout this copy! ', test);
                 // property = test.features[0].properties.STATE_NAME;
                 // console.log('Checkout this properties! ', property);
